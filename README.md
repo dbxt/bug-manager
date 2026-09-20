@@ -40,13 +40,25 @@ for example `https://bug-manager.projects.davidwaynebaxter.net` to `http://192.1
 ## Layout
 
 ```
-public/index.html          the demo page
-public/assets/bug-demo.js  data generator, scan, ranking, filters, burn-down sprint
-public/assets/*.css        shared site styles and demo styles
-public/assets/theme.js     light / dark toggle
-serve.py                   static server
-bug-manager.service        systemd user unit
+public/index.html            the app shell (top bar, status bar, cards, workspace, drawer, About dialog)
+public/assets/app.js         data generator, scan, ranking, filters, drawer, burn-down sprint
+public/assets/app.css        all styles, light and dark themes, no external fonts
+public/assets/theme-init.js  applies the saved or system theme before first paint
+serve.py                     static server with a strict Content-Security-Policy
+bug-manager.service          systemd user unit
 ```
+
+The app is fully self-contained: it loads no fonts, scripts, or images from any other origin, and the
+Content-Security-Policy (`default-src 'self'`, `connect-src 'none'`, no inline styles) enforces that.
+
+## Using it
+
+- The app opens with a completed scan. **Run scan** replays the scan from scratch.
+- Click a repository to filter the findings, and click a finding to open its detail drawer (code, reasoning,
+  pull request, ticket, and how it was ranked).
+- **Play sprint** closes the highest-ranked findings over ten days. The **Burn-down** tab compares that with
+  closing the same number in no particular order.
+- **About** explains what is simulated and links to the case study.
 
 ## How the simulation works
 

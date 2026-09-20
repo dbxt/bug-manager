@@ -7,9 +7,8 @@ strict Content-Security-Policy is sent (the page needs no network calls).
 import argparse, os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
-CSP = ("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-       "font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; "
-       "frame-ancestors 'none'; base-uri 'none'; form-action 'none'")
+CSP = ("default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; "
+       "connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'")
 
 class Handler(SimpleHTTPRequestHandler):
     def end_headers(self):
