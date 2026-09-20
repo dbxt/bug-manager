@@ -37,6 +37,9 @@ Lingering is enabled for this user, so the service starts at boot. To remove it:
 The server listens on port 8430 and accepts any `Host` header, so a reverse proxy can map a name straight to it,
 for example `https://bug-manager.projects.davidwaynebaxter.net` to `http://192.168.1.42:8430`.
 
+All asset URLs are relative, so `public/` can also be dropped into any folder of a static host. The production copy lives at
+`https://davidwaynebaxter.com/projects/bug-manager/`, deployed from the portfolio repo.
+
 ## Layout
 
 ```
