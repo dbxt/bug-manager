@@ -1,0 +1,23 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # public/ is the site; .htaccess (security headers) lives at the repo root so serve.py never serves it locally.
+      - name: Stage site
+        run: |
+          mkdir site
+          cp -r public/. site/
+          cp .htaccess site/
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./site/
+          server-dir: ./
