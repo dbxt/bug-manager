@@ -38,7 +38,8 @@ The server listens on port 8430 and accepts any `Host` header, so a reverse prox
 for example `https://bug-manager.projects.davidwaynebaxter.net` to `http://192.168.1.42:8430`.
 
 All asset URLs are relative, so `public/` can also be dropped into any folder of a static host. The production copy lives at
-`https://davidwaynebaxter.com/projects/bug-manager/`, deployed from the portfolio repo.
+`https://bug-manager.projects.davidwaynebaxter.com/`. A push to `main` deploys it over FTPS (see `.github/workflows/deploy.yml`).
+The page is marked `noindex`: the case study on davidwaynebaxter.com is the page meant to appear in search.
 
 ## Layout
 
