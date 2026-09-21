@@ -346,6 +346,7 @@
     fillCategories();
     S.findings = generate(); S.findings.forEach(function (f) { f.status = baseStatus(f); });
     S.ready = true; S.done = 5; S.active = 6; renderAll();
+    document.querySelector('.app').classList.add('ready');
 
     $('#scan').addEventListener('click', runScan);
     $('#theme').addEventListener('click', function () { applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true); });

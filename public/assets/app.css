@@ -67,6 +67,9 @@ code, pre { font-family: var(--mono); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .app { max-width: 1480px; margin: 0 auto; padding: 0 20px 28px; }
+/* app.js fills the workspace on DOMContentLoaded. Keep it out of sight until then, so the empty shell
+   does not jump when the summary cards, repository list and table appear (it was a 0.9 layout-shift score). */
+.app:not(.ready) > main { visibility: hidden; }
 
 /* ---------- top bar ---------- */
 .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
